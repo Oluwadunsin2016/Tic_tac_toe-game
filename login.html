@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>login</title>
+    <link rel="stylesheet" href="css/log.css" />
+    <link rel="manifest" href="manifest.json">
+
+       <!-- ios support -->
+    <link rel="apple-touch-icon" href="images/IMG_20220819_195039.png">
+
+    <!-- Font_Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body onload="redirect()">
+    <div class="container col-8 col-md-5 text-center my-4 shadow">
+      <h2 class="mb-4">Sign In</h2>
+      <form class="col-10 mx-auto login">
+        <input
+          type="text"
+          class="form-control my-2"
+          name="firstName"
+          placeholder="First Name"
+        />
+        <input
+          type="password"
+          class="form-control my-2"
+          name="password"
+          placeholder="Password"
+        />
+        <small class="response"></small><br />
+        <input type="submit" class="mt-2 btn btn-primary" name="" id="" />
+        <p class="mt-4">
+          Don't have an account?
+          <a href="html/registration.html">Sign Up Here</a>
+        </p>
+      </form>
+    </div>
+
+    <script>
+      const loginForm = document.querySelector("form");
+      const response = document.querySelector(".response");
+
+      let loginId = JSON.parse(localStorage.getItem("loginId"));
+      const redirect = () => {
+        if (loginId) {
+          location.href = "http://127.0.0.1:5501/html/board.html";
+        }
+      };
+
+      let existedPlayers = JSON.parse(
+        localStorage.getItem("registeredPlayers")
+      );
+      if (!existedPlayers) {
+        location.href = "http://127.0.0.1:5501/html/registration.html";
+        location.reload()
+      }
+
+      loginForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        let firstname = loginForm.firstName.value.trim().toLowerCase();
+        let password = loginForm.password.value.trim().toLowerCase();
+        let currentPlayers = JSON.parse(
+          localStorage.getItem("registeredPlayers")
+        );
+        let currentplayer = currentPlayers.find(
+          (existing) =>
+            existing.firstname == firstname && existing.password == password
+        );
+        console.log(firstname, password);
+        console.log(currentplayer);
+        if (currentplayer) {
+          localStorage.loginId = currentplayer.id;
+          response.style.color = "green";
+          response.innerHTML = "Logged in successfully";
+          location.href = "http://127.0.0.1:5501/html/opponent.html";
+        } else {
+          response.style.color = "red";
+          response.innerHTML = "Incorrect Credentials";
+        }
+        loginForm.reset();
+      });
+    </script>
+  </body>
+</html>

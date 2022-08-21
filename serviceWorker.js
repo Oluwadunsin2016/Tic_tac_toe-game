@@ -1,7 +1,7 @@
 const ticTacToe = "tic-tac-toe";
 const assets = [
   "/",
-  "/login.html",
+  "/index.html",
   "/html/opponent.html",
   "/html/board.html",
   "/html/registration.html",

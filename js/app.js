@@ -48,7 +48,7 @@ enable=true;
 let loginId = JSON.parse(localStorage.getItem("loginId"));
  let existedPlayers = JSON.parse(localStorage.getItem("registeredPlayers"));
 if (existedPlayers && !loginId) {
- location.href="http://127.0.0.1:5501/login.html";
+ location.href="http://127.0.0.1:5501/index.html";
 }else if (!existedPlayers) {
  location.href="http://127.0.0.1:5501/html/registration.html";
 }
@@ -59,7 +59,7 @@ logout.addEventListener('click', ()=>{
 localStorage.removeItem('loginId')
 localStorage.removeItem('counteredId')
 localStorage.removeItem('enableSound')
- location.href="http://127.0.0.1:5501/login.html";
+ location.href="http://127.0.0.1:5501/index.html";
 })
 
 const playerO = "O";

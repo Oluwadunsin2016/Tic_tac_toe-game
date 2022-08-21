@@ -61,13 +61,13 @@
         }
       };
 
-      let existedPlayers = JSON.parse(
-        localStorage.getItem("registeredPlayers")
-      );
-      if (!existedPlayers) {
-        location.href = "http://127.0.0.1:5501/html/registration.html";
-        location.reload()
-      }
+      // let existedPlayers = JSON.parse(
+      //   localStorage.getItem("registeredPlayers")
+      // );
+      // if (!existedPlayers) {
+      //   location.href = "http://127.0.0.1:5501/html/registration.html";
+      //   location.reload()
+      // }
 
       loginForm.addEventListener("submit", (event) => {
         event.preventDefault();

@@ -278,7 +278,7 @@ function submit() {
     let onceCountered = currentplayer.scoreDetails.find(
       (countered) =>
         countered.playerTwo.firstname == opponentfirstname.value.trim().toLowerCase() &&
-        countered.playerTwo.lastname == opponentlastname.valuet.trim().toLowerCase()
+        countered.playerTwo.lastname == opponentlastname.value.trim().toLowerCase()
     );
 
     if (!onceCountered) {

@@ -54,9 +54,9 @@
       const loginForm = document.querySelector("form");
       const response = document.querySelector(".response");
 
-      let loginId = JSON.parse(localStorage.getItem("loginId"));
+       let counteredId = JSON.parse(localStorage.getItem("counteredId"));
       const redirect = () => {
-        if (loginId) {
+        if (counteredId!=null || counteredId!=undefined) {
           location.href = "http://127.0.0.1:5501/html/board.html";
         }
       };
